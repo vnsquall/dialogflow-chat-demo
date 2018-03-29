@@ -12,7 +12,8 @@
 // limitations under the License.
 
 // Load third party dependencies
-const app = require('express')();
+const express = require('express');
+const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
@@ -33,6 +34,9 @@ const customerStore = new CustomerStore();
 const messageRouter = new MessageRouter(customerStore, apiAiApp, io.of('/customer'), io.of('/operator'));
 
 // Serve static html files for the customer and operator clients
+app.use('/css', express.static(__dirname + '/static/css'));
+app.use('/fonts', express.static(__dirname + '/static/fonts'));
+
 app.get('/customer', (req, res) => {
   res.sendFile(`${__dirname}/static/customer.html`);
 });
