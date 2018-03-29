@@ -16,6 +16,10 @@ const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 8080;
+
 // Load our custom classes
 const CustomerStore = require('./customerStore.js');
 const MessageRouter = require('./messageRouter.js');
@@ -39,6 +43,6 @@ app.get('/operator', (req, res) => {
 
 // Begin responding to websocket and http requests
 messageRouter.handleConnections();
-http.listen(3000, () => {
-  console.log('Listening on *:3000');
+http.listen(port, () => {
+  console.log('Our app is running on http://localhost:' + port);
 });
