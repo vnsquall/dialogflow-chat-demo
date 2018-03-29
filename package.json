@@ -1,9 +1,10 @@
 {
-  "name": "agent-human-handoff-sample",
+  "name": "dialogflow-chat-demo",
   "version": "0.0.1",
-  "description": "Code sample for agent-human handoff with API.AI",
+  "description": "Code sample for dialogflow-chat-demo",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Google Inc.",
